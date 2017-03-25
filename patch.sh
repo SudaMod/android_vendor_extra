@@ -1,5 +1,5 @@
 ROOT="${PWD}"
-OMS-REPOSITORIES=(
+OMSREPOSITORIES=(
     'build'
     'frameworks/base'
     'frameworks/native'
@@ -15,19 +15,19 @@ OMS-REPOSITORIES=(
     'vendor/cm'
 )
 
-ANGLER-REPOSITORIES=(
+ANGLERREPOSITORIES=(
     'kernel/huawei/angler'
 )
 
-for oms-repository in "${OMS-REPOSITORIES[@]}"; do
-    cd "${ROOT}/${oms-repository}"
-    git am --whitespace=nowarn --keep-cr "${ROOT}/vendor/extra/oms-patches/${oms-repository}"/*
+for omsrepository in "${OMSREPOSITORIES[@]}"; do
+    cd "${ROOT}/${omsrepository}"
+    git am --whitespace=nowarn --keep-cr "${ROOT}/vendor/extra/oms-patches/${omsrepository}"/*
     cd "${ROOT}"
 done
 
-for angler-repository in "${ANGLER-REPOSITORIES[@]}"; do
-    cd "${ROOT}/${angler-repository}"
-    git am --whitespace=nowarn --keep-cr "${ROOT}/vendor/extra/angler-patches/${angler-repository}"/*
+for anglerrepository in "${ANGLERREPOSITORIES[@]}"; do
+    cd "${ROOT}/${anglerrepository}"
+    git am --whitespace=nowarn --keep-cr "${ROOT}/vendor/extra/angler-patches/${anglerrepository}"/*
     cd "${ROOT}"
 done
 
